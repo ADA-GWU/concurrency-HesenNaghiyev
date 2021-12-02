@@ -94,7 +94,7 @@ public class ImageProcessor {
      */
     static void saveResultToFile() {
         try {
-            ImageIO.write(image, "jpeg", new File("/Users/hesennaghiyev/Desktop/result.jpeg"));
+            ImageIO.write(image, "jpeg", new File("result.jpeg"));
         } catch (IOException e) {
             throw new CustomException(String.format("Exception occured while writing final result to image %s", e.getMessage()));
         }
