@@ -35,8 +35,8 @@ public class ImageProcessor {
      * This mode just pack all methods in order to make call from one places
      */
     static void executeInSingleThreadedMode(String mode, String filePath) {
-        initializeJFrame(mode);
         readImageFromPath(filePath);
+        initializeJFrame(mode);
         drawInitialImage();
         updateImageInRealTime(0, image.getHeight());
         saveResultToFile();
@@ -125,12 +125,30 @@ public class ImageProcessor {
     static BufferedImage readImageFromPath(String filePath) {
         try {
             image = ImageIO.read(new File(filePath));
+            image = resizeTheImage();
             imageWidth = image.getWidth();
             return image;
         } catch (IOException e) {
             throw new CustomException(String.format("Exception occured while reading image %s", e.getMessage()));
         }
     }
+
+
+     /**
+     * @return scaled image
+     * This methods is used to resize the big image and return new scaled image
+     */
+    static BufferedImage resizeTheImage() {
+        int width = image.getWidth();
+        int height = image.getHeight();
+        if (width > 1500) width = width / 3;
+        if (height > 1200) height = height / 3;
+        BufferedImage outputImage = new BufferedImage(width, height, image.getType());
+        Graphics2D g2d = outputImage.createGraphics();
+        g2d.drawImage(image, 0, 0, width, height, null);
+        g2d.dispose();
+        return outputImage;
+    }  
 
     /**
      * @param averageColor

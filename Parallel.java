@@ -32,9 +32,8 @@ public class Parallel extends Thread {
      * @param filePath l divide the image by height and assign the specific height range to each thread.
      */
     public static void executeImageInMultiThreadedMode(String mode, String filePath) {
-        ImageProcessor.initializeJFrame(mode);
         BufferedImage bufferedImage = ImageProcessor.readImageFromPath(filePath);
-
+        ImageProcessor.initializeJFrame(mode);
         int coresCount = Runtime.getRuntime().availableProcessors();
         Integer squareSize = ImageProcessor.getSquareSize();
         int amountOfCompleteSquares = bufferedImage.getHeight() / squareSize;
