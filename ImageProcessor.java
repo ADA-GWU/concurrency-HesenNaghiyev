@@ -13,6 +13,7 @@ public class ImageProcessor {
     private static Integer squareSize;
     private static Integer imageWidth;
     private static BufferedImage image;
+    private static String mode;
 
     public static Integer getSquareSize() {
         return squareSize;
@@ -196,11 +197,11 @@ public class ImageProcessor {
     public static void main(String[] args) {
        String imgPath = args[0];
        squareSize = Integer.parseInt(args[1]);
-       String mode = args[2];
-       String m = mode;
+        mode = args[2];
+
     
 
-        if (m.equalsIgnoreCase("S"))
+        if (mode.equalsIgnoreCase("S"))
             executeInSingleThreadedMode("Single Mode", imgPath);
         else
             Parallel.executeImageInMultiThreadedMode("MultiThreaded Mode", imgPath);
