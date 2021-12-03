@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class ImageProcessor {
 
-    private static final Byte PADDING = 25;
+    private static final Byte PADDING = 40;
     private static JFrame jFrame;
     private static JLabel jLabel;
     private static Integer squareSize;
